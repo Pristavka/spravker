@@ -30,15 +30,10 @@ export default {
               options: {
                 modules: true,
                 importLoaders: 2,
-                localIdentName: '[local]',
-                minimize: true,
-                sourceMap: true
+                localIdentName: '[local]'
               }
             },
-            { 
-              loader: 'sass-loader',
-              sourceMap: true
-            },
+            { loader: 'sass-loader' },
             {
               loader: 'postcss-loader',
               options: {
