@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const fetchORGS = url => axios.get(url);
-const addORG = (url, body) => axios.post(url, body);
+const fetchOrgsAsync = url => axios.get(url).then(response => response.data);
+const addOrgAsync = (url, body) => axios.post(url, body).then(response => response.data);
 
 export default {
-  fetchORGS,
-  addORG
+  fetchOrgsAsync,
+  addOrgAsync
 };

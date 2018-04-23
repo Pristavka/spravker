@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 import organizations from './organizations';
 
-const spravker = combineReducers({
+export default combineReducers({
   organizations
 });
-
-export default spravker;

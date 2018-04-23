@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 
 export default class AddOrgForm extends React.Component {
@@ -21,16 +20,6 @@ export default class AddOrgForm extends React.Component {
       title: this.state.title,
       body: this.state.body
     };
-
-    fetch('', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newOrganization)
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
   };
 
   render() {

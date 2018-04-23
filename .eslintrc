@@ -27,6 +27,7 @@
     "no-eval": 1,
     "no-extra-bind": 1,
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "react/prop-types": 0
   }
 }

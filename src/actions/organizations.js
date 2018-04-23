@@ -1,6 +1,17 @@
-import { ADD_ORG } from '../constants';
+import { FETCH_ORGS, ADD_ORG } from './constants';
 
-export const addNewORG = (url, body) => (dispatch, getState, api) =>
-  api.addORG(url, body).then(() => dispatch(addPosts(body)));
+// Thunk
+const addOrgAsync = (url, body) => (dispatch, getState, api) =>
+  api.addOrgAsync(url, body).then(() => dispatch(addOrg(body)));
 
-export const addPosts = org => ({ type: ADD_ORG, org });
+const fetchOrgsAsync = url => (dispatch, getState, api) =>
+  api.fetchOrgsAsync(url).then(data => dispatch(fetchOrgs(data)));
+
+// Basics actions
+const fetchOrgs = orgs => ({ type: FETCH_ORGS, payload: orgs });
+const addOrg = org => ({ type: ADD_ORG, payload: org });
+
+export {
+  addOrgAsync,
+  fetchOrgsAsync
+};

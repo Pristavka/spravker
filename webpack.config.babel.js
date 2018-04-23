@@ -42,15 +42,18 @@ export default {
             }
           ]
         })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        }
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPligin({
-      template: path.join(PATH.SRC, '/index.html')
-    }),
-    new ExtractTextPlugin({
-      filename: path.join(PATH.DIST, '/css/[name].bundle-[hash].css')
-    })
+    new HtmlWebpackPligin({ template: path.join(PATH.SRC, '/index.html') }),
+    new ExtractTextPlugin('[name].bundle-[hash].css')
   ]
 };
