@@ -5,15 +5,18 @@
     "commonjs": true,
     "es6": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "modules": true,
-      "classes": true
+      "classes": true,
+      "jsx": true
     },
     "sourceType": "module"
   },
+  "plugins": ["react"],
   "rules": {
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
@@ -22,6 +25,9 @@
     "no-alert": 1,
     "no-else-return": 1,
     "no-eval": 1,
-    "no-extra-bind": 1
+    "no-extra-bind": 1,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/prop-types": 0
   }
 }

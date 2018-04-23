@@ -30,15 +30,10 @@ export default {
               options: {
                 modules: true,
                 importLoaders: 2,
-                localIdentName: '[local]',
-                minimize: true,
-                sourceMap: true
+                localIdentName: '[local]'
               }
             },
-            { 
-              loader: 'sass-loader',
-              sourceMap: true
-            },
+            { loader: 'sass-loader' },
             {
               loader: 'postcss-loader',
               options: {
@@ -47,15 +42,18 @@ export default {
             }
           ]
         })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        }
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPligin({
-      template: path.join(PATH.SRC, '/index.html')
-    }),
-    new ExtractTextPlugin({
-      filename: path.join(PATH.DIST, '/css/[name].bundle-[hash].css')
-    })
+    new HtmlWebpackPligin({ template: path.join(PATH.SRC, '/index.html') }),
+    new ExtractTextPlugin('[name].bundle-[hash].css')
   ]
 };
