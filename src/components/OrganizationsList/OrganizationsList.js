@@ -7,24 +7,22 @@ import Organization from '../Organization/Organization';
 // import styles from './OrganizationsList.scss';
 import urls from '../../configs/urls';
 
-class OrganizationsList extends React.Component {
+@connect(
+  ({ organizations: { organizations } }) => ({ orgs: organizations }),
+  { fetchOrgsAsync}
+)
+export default class OrganizationsList extends React.Component {
+  static propTypes = {
+    
+  }
   componentDidMount() {
     this.props.fetchOrgsAsync(urls.fetchOrgs);
   }
 
   render() {
     const orgList = this.props.orgs.map(org => (
-      <Organization org={org} key={org.id}/>
+      <Organization org={org} key={org.id} />
     ));
-    return (
-      <React.Fragment>
-        {orgList}
-      </React.Fragment>
-    );
+    return <React.Fragment>{orgList}</React.Fragment>;
   }
 }
-
-export default connect(
-  ({ organizations }) => ({ orgs: organizations.organizations }),
-  { fetchOrgsAsync }
-)(OrganizationsList);
