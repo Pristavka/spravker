@@ -1,8 +1,9 @@
 {
   "presets": ["env", "react", "flow"],
   "plugins": [
+    "transform-decorators-legacy",
+    "transform-decorators",
     "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-decorators"
+    "transform-object-rest-spread"
   ]
 }
