@@ -12,7 +12,7 @@ export default {
   entry: path.join(PATH.SRC, 'index.js'),
   output: {
     path: PATH.DIST,
-    filename: 'bundle-[hash].js'
+    filename: 'name.[hash].bundle.js'
   },
   module: {
     rules: [
@@ -54,6 +54,6 @@ export default {
   },
   plugins: [
     new HtmlWebpackPligin({ template: path.join(PATH.SRC, '/index.html') }),
-    new ExtractTextPlugin('[name].bundle-[hash].css')
+    new ExtractTextPlugin('[name].[hash].bundle.css')
   ]
 };
