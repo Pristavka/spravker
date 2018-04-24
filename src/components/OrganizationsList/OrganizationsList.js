@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import { fetchOrgsAsync } from '../../actions/organizations';
 
 import Organization from '../Organization/Organization';
-// import styles from './OrganizationsList.scss';
 import urls from '../../configs/urls';
 
 @connect(
   ({ organizations: { organizations } }) => ({ orgs: organizations }),
-  { fetchOrgsAsync}
+  { fetchOrgsAsync }
 )
 export default class OrganizationsList extends React.Component {
   static propTypes = {
-    
+    fetchOrgsAsync: PropTypes.func.isRequired,
+    orgs: PropTypes.array.isRequired
   }
+
   componentDidMount() {
     this.props.fetchOrgsAsync(urls.fetchOrgs);
   }
