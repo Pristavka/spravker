@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 
 import { fetchOrgsAsync } from '../../actions/organizations';
 
+import WithErrorBoundaries from '../HOC/WithErrorBoundaries';
 import Organization from '../Organization/Organization';
 import urls from '../../configs/urls';
 
@@ -11,11 +12,11 @@ import urls from '../../configs/urls';
   ({ organizations: { organizations } }) => ({ orgs: organizations }),
   { fetchOrgsAsync }
 )
-export default class OrganizationsList extends React.Component {
+class OrganizationsList extends React.Component {
   static propTypes = {
     fetchOrgsAsync: PropTypes.func.isRequired,
     orgs: PropTypes.array.isRequired
-  }
+  };
 
   componentDidMount() {
     this.props.fetchOrgsAsync(urls.fetchOrgs);
@@ -28,3 +29,5 @@ export default class OrganizationsList extends React.Component {
     return <React.Fragment>{orgList}</React.Fragment>;
   }
 }
+
+export default WithErrorBoundaries(OrganizationsList);
