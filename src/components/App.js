@@ -6,11 +6,11 @@ import OrganizationsList from './OrganizationsList/OrganizationsList';
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Spravker</h1>
         <AddOrgForm />
         <OrganizationsList />
-      </div>
+      </React.Fragment>
     );
   }
 }
