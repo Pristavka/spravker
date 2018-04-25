@@ -13,7 +13,10 @@ const organizations = (state = initialState, action) => {
         organizations: action.payload
       };
     case ADD_ORG:
-      return state;
+      return {
+        ...state,
+        organization: action.payload
+      };
     default:
       return state;
   }
