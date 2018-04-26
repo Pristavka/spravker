@@ -9,7 +9,7 @@ import urls from '../../configs/urls';
 export default class AddOrgForm extends React.Component {
   static propTypes = {
     addOrgAsync: PropTypes.func.isRequired
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -20,7 +20,7 @@ export default class AddOrgForm extends React.Component {
   }
 
   handleOnChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState(state => ({ ...state, [e.target.name]: e.target.value }));
   };
 
   handleOnSubmit = e => {
@@ -32,7 +32,6 @@ export default class AddOrgForm extends React.Component {
     };
 
     this.props.addOrgAsync(urls.fetchOrgs, newOrganization);
-
   };
 
   render() {
