@@ -8,11 +8,12 @@ import WithErrorBoundaries from '../HOC/WithErrorBoundaries';
 import Organization from '../Organization/Organization';
 import urls from '../../configs/urls';
 
+@WithErrorBoundaries()
 @connect(
   ({ organizations: { organizations } }) => ({ orgs: organizations }),
   { fetchOrgsAsync }
 )
-class OrganizationsList extends React.Component {
+export default class OrganizationsList extends React.Component {
   static propTypes = {
     fetchOrgsAsync: PropTypes.func.isRequired,
     orgs: PropTypes.array.isRequired
@@ -29,5 +30,3 @@ class OrganizationsList extends React.Component {
     return <React.Fragment>{orgList}</React.Fragment>;
   }
 }
-
-export default WithErrorBoundaries(OrganizationsList);
