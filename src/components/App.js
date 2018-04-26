@@ -7,9 +7,11 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Spravker</h1>
-        <AddOrgForm />
-        <OrganizationsList />
+        <React.StrictMode>
+          <h1>Spravker</h1>
+          <AddOrgForm />
+          <OrganizationsList />
+        </React.StrictMode>
       </React.Fragment>
     );
   }
