@@ -11,7 +11,7 @@ const Navigation = () => {
           key={link.path}
           to={link.path}
         >
-          {link.name}
+          {link.linkName}
         </Link>
       ))}
     </nav>

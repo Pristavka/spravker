@@ -11,19 +11,19 @@ const router = {
     {
       path: '/',
       component: () => <MainPage />,
-      name: 'Main Page',
+      linkName: 'Main Page',
       exact: true
     },
     {
       path: '/add-organization',
       component: () => <AddOrgForm />,
-      name: 'Add Organization',
+      linkName: 'Add Organization',
       exact: false
     },
     {
       path: '/show-all-organization',
       component: () => <OrganizationsList />,
-      name: 'Show All Organization',
+      linkName: 'Show All Organization',
       exact: false
     }
   ]
