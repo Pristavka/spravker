@@ -11,7 +11,4 @@ const fetchOrgsAsync = url => (dispatch, getState, api) =>
 const fetchOrgs = orgs => ({ type: FETCH_ORGS, payload: orgs });
 const addOrg = org => ({ type: ADD_ORG, payload: org });
 
-export {
-  addOrgAsync,
-  fetchOrgsAsync
-};
+export { addOrgAsync, fetchOrgsAsync };

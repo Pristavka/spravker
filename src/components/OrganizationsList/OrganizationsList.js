@@ -2,25 +2,28 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchOrgsAsync } from '../../actions/organizations';
+// import { fetchOrgsAsync } from '../../actions/organizations';
+import { fetchInitialDataFromFirebase } from '../../actions/firebase/organizations';
 
 import WithErrorBoundaries from '../HOC/WithErrorBoundaries';
 import Organization from '../Organization/Organization';
-import urls from '../../configs/urls';
+// import urls from '../../configs/urls';
 
 @WithErrorBoundaries()
 @connect(
   ({ organizations: { organizations } }) => ({ orgs: organizations }),
-  { fetchOrgsAsync }
+  { /*fetchOrgsAsync,*/ fetchInitialDataFromFirebase }
 )
 export default class OrganizationsList extends React.Component {
   static propTypes = {
-    fetchOrgsAsync: PropTypes.func.isRequired,
+    // fetchOrgsAsync: PropTypes.func.isRequired,
+    fetchInitialDataFromFirebase: PropTypes.func.isRequired,
     orgs: PropTypes.array.isRequired
   };
 
   componentDidMount() {
-    this.props.fetchOrgsAsync(urls.fetchOrgs);
+    // this.props.fetchOrgsAsync(urls.fetchOrgs);
+    this.props.fetchInitialDataFromFirebase();
   }
 
   render() {

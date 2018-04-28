@@ -12,6 +12,7 @@ import { history } from './store/configureStore';
 // App component
 import App from './components/App';
 
+// Creating store
 const store = configureStore();
 
 ReactDOM.render(
