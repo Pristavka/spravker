@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { addOrgAsync } from '../../actions/organizations';
-import urls from '../../configs/urls';
+import { addNewOrganizationToFirestore } from '../../actions/firebase/organizations';
 
-@connect(null, { addOrgAsync })
+import WithReplacerFromRusToEng from '../HOC/WithReplacerFromRusToEng';
+
+@WithReplacerFromRusToEng()
+@connect(null, { addNewOrganizationToFirestore })
 export default class AddOrgForm extends React.Component {
   static propTypes = {
-    addOrgAsync: PropTypes.func.isRequired
+    addNewOrganizationToFirestore: PropTypes.func.isRequired,
+    replacerFromRusToEng: PropTypes.func.isRequired
   };
 
   constructor(props, context) {
@@ -20,6 +23,7 @@ export default class AddOrgForm extends React.Component {
   }
 
   handleOnChange = e => {
+    e.persist();
     this.setState(state => ({ ...state, [e.target.name]: e.target.value }));
   };
 
@@ -27,11 +31,12 @@ export default class AddOrgForm extends React.Component {
     e.preventDefault();
 
     const newOrganization = {
+      url: this.props.replacerFromRusToEng(this.state.title),
       title: this.state.title,
       body: this.state.body
     };
 
-    this.props.addOrgAsync(urls.fetchOrgs, newOrganization);
+    this.props.addNewOrganizationToFirestore(newOrganization);
   };
 
   render() {

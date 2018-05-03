@@ -1,8 +1,11 @@
-import { FETCH_ORGS, ADD_ORG } from '../actions/constants';
+import { FETCH_ORGS, SHOW_DIALOG_WINDOW } from '../actions/constants';
 
 const initialState = {
   organizations: [],
-  organization: {}
+  show_dialog_window: {
+    status: false,
+    type_of_information: ''
+  }
 };
 
 const organizations = (state = initialState, action) => {
@@ -12,10 +15,10 @@ const organizations = (state = initialState, action) => {
         ...state,
         organizations: action.payload
       };
-    case ADD_ORG:
+    case SHOW_DIALOG_WINDOW:
       return {
         ...state,
-        organization: action.payload
+        show_dialog_window: { ...action.payload }
       };
     default:
       return state;
