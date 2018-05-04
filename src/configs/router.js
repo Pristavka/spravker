@@ -4,6 +4,7 @@ import React from 'react';
 import MainPage from '../components/MainPage/MainPage';
 import AddOrgForm from '../components/AddOrgForm/AddOrgForm';
 import OrganizationsList from '../components/OrganizationsList/OrganizationsList';
+import Login from '../components/Login/Login';
 
 // Main router
 const router = {
@@ -24,6 +25,12 @@ const router = {
       path: '/show-all-organization',
       component: () => <OrganizationsList />,
       linkName: 'Show All Organization',
+      exact: false
+    },
+    {
+      path: '/login',
+      component: () => <Login />,
+      linkName: 'Для администраторов',
       exact: false
     }
   ]
