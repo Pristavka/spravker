@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production --config webpack.config.prod.babel.js",
-    "flow": "flow"
+    "build": "npm run clean && webpack --mode production --config webpack.config.prod.babel.js",
+    "flow": "flow",
+    "clean": "rimraf dist"
   },
   "author": "Siarhei Prystauka",
   "license": "ISC",
@@ -35,6 +36,7 @@
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.1.4",
     "redux-devtools": "^3.4.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
