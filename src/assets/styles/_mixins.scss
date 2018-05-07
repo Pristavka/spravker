@@ -1,0 +1,9 @@
+// Login form mixins
+@mixin pseudo_after($elem_width, $border_color, $margin_top, $margin_bottom) {
+  content: "";
+  display:flex;
+  width:$elem_width;
+  border-bottom: 1px solid $border_color;
+  margin-top: $margin_top;
+  margin-bottom: $margin_bottom;
+}
