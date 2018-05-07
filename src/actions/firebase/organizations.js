@@ -1,7 +1,7 @@
 import { database } from '../../firebase/firebaseInitialize';
 import { FETCH_ORGS, SHOW_DIALOG_WINDOW } from '../constants';
 
-// --------- Action to firebase ---------
+// --------- Action to Firebase ---------
 const fetchAndSubscribeInitialDataFromFirestore = () => dispatch =>
   database.collection('organizations').onSnapshot(querySnapshot => {
     const organizations = [];

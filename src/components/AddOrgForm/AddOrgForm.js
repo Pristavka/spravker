@@ -1,17 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { push } from 'react-router-redux';
+// Actions from firebase
 import { addNewOrganizationToFirestore } from '../../actions/firebase/organizations';
+import { getUserFromFirestore } from '../../actions/firebase/user';
+// Selectors for redux
+import { getUserFromStoreWithSelector } from '../../selectors/user';
 
 import WithReplacerFromRusToEng from '../HOC/WithReplacerFromRusToEng';
 
 @WithReplacerFromRusToEng()
-@connect(null, { addNewOrganizationToFirestore })
+@connect(
+  store => getUserFromStoreWithSelector(store),
+  {
+    addNewOrganizationToFirestore,
+    getUserFromFirestore,
+    push
+  })
 export default class AddOrgForm extends React.Component {
   static propTypes = {
     addNewOrganizationToFirestore: PropTypes.func.isRequired,
-    replacerFromRusToEng: PropTypes.func.isRequired
+    replacerFromRusToEng: PropTypes.func.isRequired,
+    getUserFromFirestore: PropTypes.func,
+    push: PropTypes.func,
+    user: PropTypes.object
   };
 
   constructor(props, context) {
@@ -21,6 +34,11 @@ export default class AddOrgForm extends React.Component {
       body: ''
     };
   }
+
+  componentDidMount() {
+    this.props.getUserFromFirestore();
+    this.props.push('/login');
+  }  
 
   handleOnChange = e => {
     e.persist();

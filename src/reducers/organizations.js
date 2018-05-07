@@ -8,7 +8,7 @@ const initialState = {
   }
 };
 
-const organizations = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ORGS:
       return {
@@ -24,5 +24,3 @@ const organizations = (state = initialState, action) => {
       return state;
   }
 };
-
-export default organizations;
