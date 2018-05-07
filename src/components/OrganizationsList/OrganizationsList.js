@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 // Actions from firebase
 import { fetchAndSubscribeInitialDataFromFirestore } from '../../actions/firebase/organizations';
-
 // Selectors for redux
 import { getOrganizationsFromStoreWithSelector } from '../../selectors/organizations';
 
