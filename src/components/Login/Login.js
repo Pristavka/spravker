@@ -2,28 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { replace } from 'react-router-redux';
+import { replace, goBack } from 'react-router-redux';
 // Actions from firebase
 import { signInUserWithEmailAndPassword, getUserFromFirestore } from '../../actions/firebase/user';
 // Selectors for redux
-import { getSignInErrorFromStoreWithSelector, getUserFromStoreWithSelector } from '../../selectors/user';
+import { getUserFromStoreWithSelector } from '../../selectors/user';
 
 import styles from './Login.scss';
 import logo from '../../assets/images/logo.png';
 
 @connect(
-  store => {
-    const error = getSignInErrorFromStoreWithSelector(store);
-    const user = getUserFromStoreWithSelector(store);
-    return {
-      user,
-      error
-    };
-  },
+  store => getUserFromStoreWithSelector(store),
   {
     signInUserWithEmailAndPassword,
     getUserFromFirestore,
-    replace
+    replace,
+    goBack
   }
 )
 export default class Login extends React.Component {
@@ -31,6 +25,7 @@ export default class Login extends React.Component {
     signInUserWithEmailAndPassword: PropTypes.func,
     getUserFromFirestore: PropTypes.func,
     replace: PropTypes.func,
+    goBack: PropTypes.func,
     user: PropTypes.object,
     error: PropTypes.object
   }
@@ -39,12 +34,13 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: null
     };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.user.email) nextProps.replace('/');
+    if (nextProps.user) nextProps.replace('/');
     return prevState;
   }
   
@@ -57,13 +53,14 @@ export default class Login extends React.Component {
   handleOnSubmit = e => {
     e.preventDefault();
 
-    this.props.signInUserWithEmailAndPassword(this.state.email, this.state.password);
+    this.props.signInUserWithEmailAndPassword(this.state.email, this.state.password)
+      // .then(this.props.goBack())
+      .catch(error => this.setState(state => ({ ... state, error })));
   };
 
   renderErrorMessage = () => {
-    console.log('////', this.props);
-    if (this.props.error.code === 'auth/invalid-email') return (<div>Введите корректный Email</div>);
-    if (this.props.error.code === 'auth/user-not-found') return (<div>Данный пользователь не существует</div>);
+    if (this.state.error.code === 'auth/invalid-email') return (<div>Введите корректный Email</div>);
+    if (this.state.error.code === 'auth/user-not-found') return (<div>Данный пользователь не существует</div>);
   }
 
   render() {
@@ -86,7 +83,7 @@ export default class Login extends React.Component {
                   placeholder="Введите Ваш Email..."
                   onChange={this.handleOnChange}
                 />
-                {this.props.error ? this.renderErrorMessage() : null}
+                {this.state.error ? this.renderErrorMessage() : null}
               </div>
               <div className={styles.formControl}>
                 <input
