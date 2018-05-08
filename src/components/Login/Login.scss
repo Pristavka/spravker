@@ -14,7 +14,7 @@
   .loginLogo {
     text-align: center;
     &::after {
-      @include pseudo_after(100%, #00000026, 15px, 0);
+      @include pseudo_after(100%, $color-basic-grey, 15px, 0);
     }
   }
   h1 {
@@ -53,7 +53,7 @@
     }
     .formControl {
       &::after {
-        @include pseudo_after(100%, #00000026, 0, 15px);
+        @include pseudo_after(100%, $color-basic-grey, 0, 15px);
       }
     }
     .formControlSubmit {
