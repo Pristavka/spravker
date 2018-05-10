@@ -26,8 +26,7 @@ export default class Login extends React.Component {
     getUserFromFirestore: PropTypes.func,
     replace: PropTypes.func,
     goBack: PropTypes.func,
-    user: PropTypes.object,
-    error: PropTypes.object
+    user: PropTypes.object
   }
 
   constructor(props) {
