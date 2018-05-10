@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Navigation from './Navigation/Navigation';
 import router from '../configs/router';
@@ -22,6 +22,7 @@ export default class App extends React.Component {
                   component={link.component}
                 />
               ))}
+              <Redirect from='/' to='/login' />
             </Switch>
           </div>
         </React.StrictMode>
