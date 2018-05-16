@@ -25,3 +25,19 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('#root')
 );
+
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    const NextApp = import('./components/App');
+    ReactDOM.render(
+      <Provider store={store}>
+        {/* <BrowserRouter> */}
+        <ConnectedRouter history={history}>
+          <NextApp />
+        </ConnectedRouter>
+        {/* </BrowserRouter> */}
+      </Provider>,
+      document.querySelector('#root')
+    );
+  });
+}

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 import Navigation from './Navigation/Navigation';
 import router from '../configs/router';
 
 import styles from './App.scss';
 
+@hot(module)
 export default class App extends React.Component {
   render() {
     return (
