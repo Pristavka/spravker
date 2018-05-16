@@ -4,6 +4,8 @@
     "transform-decorators-legacy",
     "transform-decorators",
     "transform-class-properties",
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    "syntax-dynamic-import",
+    "react-hot-loader/babel"
   ]
 }
