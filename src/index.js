@@ -1,7 +1,7 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter as Router} from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -17,11 +17,11 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <BrowserRouter> */}
+    {/* <Router> */}
     <ConnectedRouter history={history}>
       <App />
     </ConnectedRouter>
-    {/* </BrowserRouter> */}
+    {/* </Router> */}
   </Provider>,
   document.querySelector('#root')
 );
@@ -31,11 +31,11 @@ if (module.hot) {
     const NextApp = import('./components/App');
     ReactDOM.render(
       <Provider store={store}>
-        {/* <BrowserRouter> */}
+        {/* <Router> */}
         <ConnectedRouter history={history}>
           <NextApp />
         </ConnectedRouter>
-        {/* </BrowserRouter> */}
+        {/* </Router> */}
       </Provider>,
       document.querySelector('#root')
     );
