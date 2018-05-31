@@ -15,8 +15,8 @@ export default () => {
       render() {
         return (
           <WrappedComponent
-          replacerFromRusToEng={replacerFromRusToEng}
-          {...this.props}
+            replacerFromRusToEng={replacerFromRusToEng}
+            {...this.props}
           />
         );
       }
