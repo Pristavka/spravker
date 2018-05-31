@@ -82,7 +82,7 @@ export default class Login extends React.Component {
                   placeholder="Введите Ваш Email..."
                   onChange={this.handleOnChange}
                 />
-                {this.state.error ? this.renderErrorMessage() : null}
+                {this.state.error && this.renderErrorMessage()}
               </div>
               <div className={styles.formControl}>
                 <input
