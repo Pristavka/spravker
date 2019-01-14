@@ -24,21 +24,21 @@ export default {
         https: false,
         open: true,
         port: process.env.PORT || 7000
-      },
+    },
     context: __dirname,
     resolve: {
         modules: [
             'node_modules',
             path.resolve(PATH.SRC)
-          ],
+        ],
         extensions: ['.js', '.json', '.jsx', '.scss', '.css']
-        },
+    },
     module: {
         rules: [
             {
                 test: /\.js(x?)$/,
                 exclude: /node_modules/,
-                use: [ { loader: 'babel-loader' } ]
+                use: [{ loader: 'babel-loader' }]
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -57,14 +57,14 @@ export default {
                         loader: 'postcss-loader',
                         options: { plugins: [autoprefixer()] }
                     },
-                    { 
+                    {
                         loader: 'sass-loader'
                     }
                 ]
             },
             {
                 test: /\.html$/,
-                use: [ { loader: 'html-loader' } ]
+                use: [{ loader: 'html-loader' }]
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
