@@ -10,12 +10,11 @@ h1, h2, h3, h4, p, a, input {
 }
 h1 {
   margin:$h1-basic-margin;
-}
-p {
-  margin:$p-basic-margin;
+  color: #ffffff;
 }
 .wrapper {
   display:flex;
   height: 100%;
+  justify-content: center;
   background: $app-background-basic-img;
 }
