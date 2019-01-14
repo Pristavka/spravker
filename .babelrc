@@ -1,11 +1,15 @@
 {
-  "presets": ["env", "react", "flow"],
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-decorators",
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "syntax-dynamic-import",
-    "react-hot-loader/babel"
-  ]
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-flow"
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators", {
+            "legacy": false,
+            "decoratorsBeforeExport": true
+            }],
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-syntax-dynamic-import"
+    ]
 }
