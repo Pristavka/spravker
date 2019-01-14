@@ -23,15 +23,16 @@ export default {
         hot: true,
         https: false,
         open: true,
-        port: process.env.PORT || 7000
+        port: process.env.PORT || 7000,
+        overlay: {
+            warnings: true,
+            errors: true
+        }
     },
     context: __dirname,
     resolve: {
-        modules: [
-            'node_modules',
-            path.resolve(PATH.SRC)
-        ],
-        extensions: ['.js', '.json', '.jsx', '.scss', '.css']
+        modules: ['node_modules', path.resolve(PATH.SRC)],
+        extensions: ['.js', '.jsx', '.json', '.scss', '.css']
     },
     module: {
         rules: [
