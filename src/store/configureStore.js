@@ -1,10 +1,9 @@
 // @flow
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-// import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import rootReducer from 'reducers';
-import rootSaga from 'sagas';
+import { rootReducer } from 'reducers';
+import { rootSaga } from 'sagas';
 
 // React-router-redux
 // import createHistory from 'history/createBrowserHistory';
@@ -33,7 +32,6 @@ const configureStore = (preloadedState = {}) => {
         preloadedState,
         composeEnhancers(
             applyMiddleware(
-                // thunk.withExtraArgument(api),
                 sagaMiddleware,
                 logger,
                 // middlewareRouter
@@ -41,9 +39,9 @@ const configureStore = (preloadedState = {}) => {
         )
     );
 
+    sagaMiddleware.run(rootSaga);
     return store;
 };
 
-sagaMiddleware.run(rootSaga);
 
 export default configureStore;
