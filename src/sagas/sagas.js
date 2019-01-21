@@ -1,20 +1,24 @@
 // @flow
-import { delay } from 'redux-saga';
 import { put, takeEvery, all, call } from 'redux-saga/effects';
+import { getAllCompaniesApi } from 'api';
+import {
+    // getAllCompaniesFromApiAction,
+    setAllCompaniesToStore
+} from 'actions';
 
 // Workers
-function* getDataAsync() {
-    yield call(delay, 1000);
-    yield put({ type: 'INCREMENT' });
+function* getAllCompaniesFromApi() {
+    const companies = yield call(getAllCompaniesApi);
+    yield put(setAllCompaniesToStore(), companies);
 }
 
 // Watchers
-function* watchGetDataAsync() {
-    yield takeEvery('INCREMENT_ASYNC', getDataAsync);
+function* watchGetAllCompaniesFromApi() {
+    yield takeEvery('GET_ALL_COMPANIES', getAllCompaniesFromApi);
 }
 
-export default function* rootSaga() {
+export function* rootSaga() {
     yield all([
-        watchGetDataAsync()
+        watchGetAllCompaniesFromApi()
     ]);
 }

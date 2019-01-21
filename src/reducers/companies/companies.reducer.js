@@ -1,10 +1,11 @@
 // @flow
 import { handleActions } from 'redux-actions';
+import { setAllCompaniesToStore } from 'actions';
 
-const defaultState = {};
+const defaultState = {
+    companies: []
+};
 
-const companiesReducer = handleActions({
-
+export const companiesReducer = handleActions({
+    [setAllCompaniesToStore]: (state, { payload }) => ({...state, companies: payload})
 }, defaultState);
-
-export default companiesReducer;

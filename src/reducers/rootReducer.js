@@ -1,7 +1,7 @@
 // @flow
 import { combineReducers } from 'redux';
-import companies from 'reducers/companies';
+import { companiesReducer } from 'reducers/companies';
 
-export default combineReducers({
-    companies
+export const rootReducer = combineReducers({
+    companies: companiesReducer
 });
