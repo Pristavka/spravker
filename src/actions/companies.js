@@ -1,12 +1,13 @@
 // @flow
-import { createAction } from 'redux-actions';
+import { createActions } from 'redux-actions';
 
-// const commonActionCreator = createActions('');
-// export const getAllCompaniesAction = commonActionCreator(GET_ALL_COMPANIES);
+export const GET_ALL_COMPANIES_FROM_API_ACTION = 'GET_ALL_COMPANIES_FROM_API_ACTION';
+export const SET_ALL_COMPANIES_TO_STORE_ACTION = 'SET_ALL_COMPANIES_TO_STORE_ACTION';
 
-export const GET_ALL_COMPANIES = 'GET_ALL_COMPANIES';
-export const SET_ALL_COMPANIES_TO_STORE = 'SET_ALL_COMPANIES_TO_STORE';
-
-
-export const getAllCompaniesFromApiAction = createAction(GET_ALL_COMPANIES);
-export const setAllCompaniesToStore = createAction(SET_ALL_COMPANIES_TO_STORE);
+export const {
+    getAllCompaniesFromApiAction,
+    setAllCompaniesToStoreAction
+} = createActions({
+    GET_ALL_COMPANIES_FROM_API_ACTION: payload => payload,
+    SET_ALL_COMPANIES_TO_STORE_ACTION: companies => companies
+});
