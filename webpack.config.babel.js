@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPligin from 'html-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import autoprefixer from 'autoprefixer';
@@ -75,8 +75,10 @@ export default {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin([PATH.DIST]),
-        new HtmlWebpackPligin({ template: path.join(PATH.SRC, '/index.html') }),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [PATH.DIST]
+        }),
+        new HtmlWebpackPlugin({ template: path.join(PATH.SRC, '/index.html') }),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].bundle.css',
             chunkFilename: '[id].[hash].bundle.css'
